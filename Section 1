@@ -1,3 +1,51 @@
+import random
+emote = ""
+play = True
+money = 0
 
+print("Welcome to Lucky Roll 3000!\nRoll a 2, 7, 8, or 12 to win!\n")
+money_start = float(input("How much total money would you like to play with?: "))
+bet = float(input("How much will you wager?: "))
+while bet > money_start:
+    bet = float(input("That's greater than what you have. Wager within your means: "))
+money += money_start
 
-print("Hello World")
+multiplier = 2
+
+while play:
+    die1 = random.randint(1,6)
+    die2 = random.randint(1,6)
+
+    print("\nDice #1: " + str(die1))
+    print("Dice #2: " + str(die2))
+
+    if die1 + die2 in [2,7,8,12]:
+        print("Winner!!")
+        money += bet * multiplier
+        multiplier += 1
+    else:
+        print("Not a winner")
+        money -= bet
+        multiplier = 2
+
+    if money <= 0:
+        print("\nYou lost all of your money!")
+        break
+    print("\nYou have $" + str(money) + ".")
+    play = input("Do you want to roll again?: ")
+    if play in "Nono":
+        break
+    elif play not in "YESYesyes":
+        print("\nI'll take that as a yes...\n")
+
+    bet = float(input("How much will you wager?: "))
+    while bet > money:
+        bet = float(input("That's greater than what you have. Wager within your means: \n"))
+
+if money < money_start:
+    emote = ":( Less than you started with..."
+else:
+    emote = ":) More than you started with! "
+
+print("\nYou left with $" + str(money) + ". " + emote)
+print("Thank you for playing.")
