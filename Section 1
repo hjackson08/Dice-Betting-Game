@@ -4,8 +4,8 @@ play = True
 money = 0
 
 print("Welcome to Lucky Roll 3000!\nRoll a 2, 7, 8, or 12 to win!\n")
-money_start = float(input("How much total money would you like to play with?: "))
-bet = float(input("How much will you wager?: "))
+money_start = float(input("How much TOTAL MONEY would you like to play with?: "))
+bet = float(input("How much will you bet this round?: "))
 while bet > money_start:
     bet = float(input("That's greater than what you have. Wager within your means: "))
 money += money_start
